@@ -4,7 +4,7 @@ const Emergency = () => {
   return (
     <section>
       <div className="container">
-        <div className="flex py-8 flex-col-reverse sm:flex-row justify-between items-center mt-8 sm:mt-14">
+        <div className="flex py-8 flex-col-reverse sm:flex-row justify-between items-center mt-4 sm:mt-8">
           <div className="">
             <img src={image1} alt="" className="-ml-4 md:-ml-20" />
           </div>
