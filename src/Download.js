@@ -22,7 +22,7 @@ const Download = () => {
               </p>
             </div>
             <div className="flex py-2 px-4 rounded-md my-3 border-2 border-white items-center text-white">
-              <img src={Playstore} alt="" />
+              <img src={Playstore} alt="" className="ml-6 mr-2" />
               <p className="text-lg md:text-xl">
                 Get it on <br /> <span>PLAYSTORE</span>
               </p>
