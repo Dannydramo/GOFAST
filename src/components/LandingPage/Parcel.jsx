@@ -1,20 +1,20 @@
-import iphone from "./images/iphone.png";
-import Ellispe from "./images/Ellipse 18.png";
+import iphone from "../../images/iphone.png";
+import Ellispe from "../../images/Ellipse 18.png";
 
 const Parcel = () => {
   return (
     <section>
-      <div className="container">
+      <div className="w-[90%] mx-auto max-w-[1600px]">
         <div className="flex flex-col sm:flex-row items-center justify-between">
           <div className="">
-            <img src={iphone} alt="" className="-ml-4 md:-ml-20" />
+            <img src={iphone} alt="phonemap" className="-ml-4 lg:-ml-16" />
           </div>
-          <div className="sm:w-full md:w-3/4 lg:w-2/5">
+          <div className="sm:w-full md:w-3/4 lg:w-2/5 mt-8">
             <h1 className="text-3xl sm:text-4xl md:text-5xl">We Are Best</h1>
             <h1 className="text-3xl sm:text-4xl md:text-5xl">
               Parcel Service Ever
             </h1>
-            <p className="my-4 text-lg md:text-xl">
+            <p className="my-4 text-base md:text-lg">
               We make delivery within Nigeria very easy especially in tracking
               your goods real - time, individuals and local transporters can
               deliver goods accross Nigeria safely
@@ -22,32 +22,36 @@ const Parcel = () => {
             <div className="flex justify-between">
               <div className="space-y-4">
                 <div className="flex items-center">
-                  <img src={Ellispe} alt="" />
-                  <p className="text-lg ml-2 md:text-xl">Total free account</p>
+                  <img src={Ellispe} alt="rounded-button" />
+                  <p className="ml-2 text-base md:text-lg">
+                    Total free account
+                  </p>
                 </div>
                 <div className="flex items-center">
-                  <img src={Ellispe} alt="" />
-                  <p className="text-lg ml-2 md:text-xl">Easy to use</p>
+                  <img src={Ellispe} alt="rounded-button" />
+                  <p className="ml-2  text-base md:text-lg">Easy to use</p>
                 </div>
                 <div className="flex items-center">
-                  <img src={Ellispe} alt="" />
-                  <p className="text-lg ml-2 md:text-xl">100% guaranteed</p>
+                  <img src={Ellispe} alt="rounded-button" />
+                  <p className="ml-2 text-base md:text-lg">100% guaranteed</p>
                 </div>
               </div>
               <div className="space-y-4">
                 <div className="flex items-center">
-                  <img src={Ellispe} alt="" />
+                  <img src={Ellispe} alt="rounded-button" />
                   <p className="text-lg ml-2 md:text-xl">
                     Cheap Delivery Price
                   </p>
                 </div>
                 <div className="flex items-center">
-                  <img src={Ellispe} alt="" />
-                  <p className="text-lg ml-2 md:text-xl">Safe & Secure</p>
+                  <img src={Ellispe} alt="rounded-button" />
+                  <p className="ml-2 text-base md:text-lg">Safe & Secure</p>
                 </div>
                 <div className="flex items-center">
-                  <img src={Ellispe} alt="" />
-                  <p className="text-lg ml-2 md:text-xl">Total free account</p>
+                  <img src={Ellispe} alt="rounded-button" />
+                  <p className="ml-2 text-base md:text-lg">
+                    Total free account
+                  </p>
                 </div>
               </div>
             </div>
