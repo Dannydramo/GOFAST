@@ -16,7 +16,6 @@ import Terms from "./pages/Terms";
 import Security from "./pages/Security";
 import PrivacyNotice from "./pages/PrivacyNotice";
 import RequestRide from "./pages/RequestRide";
-import ProtectedRoute from "./pages/ProtectedRoute";
 
 function App() {
   return (
@@ -35,14 +34,7 @@ function App() {
             <Route path="/terms&categories" element={<Terms />} />
             <Route path="/security" element={<Security />} />
             <Route path="/privacynotice" element={<PrivacyNotice />} />
-            <Route
-              path="/ride"
-              element={
-                <ProtectedRoute>
-                  <RequestRide />
-                </ProtectedRoute>
-              }
-            />
+            <Route path="/ride" element={<RequestRide />} />
           </Routes>
           {/* <Footer /> */}
         </AuthProvider>

@@ -52,9 +52,10 @@ const Signup = () => {
         }, 3000);
       } else {
         // console.log(userInput, passwordInput, emailInput, confirmPasswordInput);
-        await signUpUser(emailInput, passwordInput, userInput).then(
-          navigate("/ride")
-        );
+        await signUpUser(emailInput, passwordInput, userInput).then((user) => {
+          setUser(user);
+        });
+        navigate("/ride");
       }
     } catch (error) {
       setErrMessage(error.message);
