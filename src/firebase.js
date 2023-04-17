@@ -7,7 +7,7 @@ const firebaseConfig = {
   databaseURL: "https://gofast-auth-default-rtdb.firebaseio.com",
   projectId: "gofast-auth",
   storageBucket: "gofast-auth.appspot.com",
-  messagingSenderId: 539601556122,
+  messagingSenderId: "539601556122",
   appId: "1:539601556122:web:2274fff02274186cdc8523",
 };
 
