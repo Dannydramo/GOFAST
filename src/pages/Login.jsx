@@ -9,6 +9,7 @@ const Login = () => {
   const { logInUser, googleSignUpUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const [errMessage, setErrMessage] = useState("");
+  const [user, setUser] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,8 +23,10 @@ const Login = () => {
           setErrMessage("");
         }, 3000);
       } else {
-        await logInUser(emailInput, passwordInput);
-        navigate("/ride");
+        await logInUser(emailInput, passwordInput).then((user) => {
+          setUser(user);
+          navigate("/ride");
+        });
       }
     } catch (error) {
       setErrMessage(error.message);
@@ -34,8 +37,14 @@ const Login = () => {
   };
 
   const googleSign = async () => {
-    googleSignUpUser();
-    navigate("/ride");
+    try {
+      await googleSignUpUser().then((user) => {
+        setUser(user);
+        navigate("/ride");
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <Fragment>

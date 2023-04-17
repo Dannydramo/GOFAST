@@ -54,8 +54,8 @@ const Signup = () => {
         // console.log(userInput, passwordInput, emailInput, confirmPasswordInput);
         await signUpUser(emailInput, passwordInput, userInput).then((user) => {
           setUser(user);
+          navigate("/ride");
         });
-        navigate("/ride");
       }
     } catch (error) {
       setErrMessage(error.message);
@@ -67,8 +67,14 @@ const Signup = () => {
 
   // Firebase User Google Auth
   const googleSign = async () => {
-    googleSignUpUser();
-    navigate("/ride");
+    try {
+      await googleSignUpUser().then((user) => {
+        setUser(user);
+        navigate("/ride");
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
