@@ -25,7 +25,13 @@ const Login = () => {
       } else {
         await logInUser(emailInput, passwordInput).then((user) => {
           setUser(user);
-          navigate("/ride");
+          if (!user || user === null || user === undefined) {
+            console.log("NO USER FOUND");
+            return;
+          } else {
+            console.log("USER FOUND");
+            navigate("/ride");
+          }
         });
       }
     } catch (error) {
@@ -40,7 +46,13 @@ const Login = () => {
     try {
       await googleSignUpUser().then((user) => {
         setUser(user);
-        navigate("/ride");
+        if (!user || user === null || user === undefined) {
+          console.log("NO USER FOUND");
+          return;
+        } else {
+          console.log("USER FOUND");
+          navigate("/ride");
+        }
       });
     } catch (error) {
       console.log(error);

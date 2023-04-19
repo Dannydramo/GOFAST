@@ -16,6 +16,7 @@ import Terms from "./pages/Terms";
 import Security from "./pages/Security";
 import PrivacyNotice from "./pages/PrivacyNotice";
 import RequestRide from "./pages/RequestRide";
+import BlogDetails from "./pages/BlogDetails";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:blogid" element={<BlogDetails />} />
             <Route path="/faq" element={<Faq />} />
             <Route path="/post" element={<Post />} />
             <Route path="/newsletter" element={<Newsletter />} />

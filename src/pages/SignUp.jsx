@@ -54,7 +54,14 @@ const Signup = () => {
         // console.log(userInput, passwordInput, emailInput, confirmPasswordInput);
         await signUpUser(emailInput, passwordInput, userInput).then((user) => {
           setUser(user);
-          navigate("/ride");
+
+          if (!user || user === null || user === undefined) {
+            console.log("NO USER FOUND");
+            return;
+          } else {
+            console.log("USER FOUND");
+            navigate("/ride");
+          }
         });
       }
     } catch (error) {
@@ -70,7 +77,13 @@ const Signup = () => {
     try {
       await googleSignUpUser().then((user) => {
         setUser(user);
-        navigate("/ride");
+        if (!user || user === null || user === undefined) {
+          console.log("NO USER FOUND");
+          return;
+        } else {
+          console.log("USER FOUND");
+          navigate("/ride");
+        }
       });
     } catch (error) {
       console.log(error);
@@ -80,7 +93,7 @@ const Signup = () => {
   return (
     <Fragment>
       <section>
-        <div className="w-[90%] max-w-[600px] mx-auto mt-[6rem] md:mt-24 md:p-8 md:bg-white">
+        <div className="w-[90%] max-w-[600px] mx-auto mt-[6rem] md:mt-24 md:p-8">
           <h1 className="text-3xl">SignUp</h1>
           <form onSubmit={handleSubmit}>
             <div className="my-4 flex flex-col text-base md:text-lg">

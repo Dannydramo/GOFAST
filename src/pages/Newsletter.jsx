@@ -43,25 +43,25 @@ const Newsletter = () => {
             </p>
             <ul className="list-disc list-inside mb-4">
               <li className="text-base md:text-lg mb-2">
-                Double-check your delivery address: Ensure that your delivery
-                address is accurate and up-to-date, to avoid any delays or
-                misdeliveries.
+                <strong> Double-check your delivery address: </strong>Ensure
+                that your delivery address is accurate and up-to-date, to avoid
+                any delays or misdeliveries.
               </li>
               <li className="text-base md:text-lg mb-2">
-                Be available for the delivery: Make sure that you or someone you
-                trust is available to receive your package during the estimated
-                delivery time.
+                <strong> Be available for the delivery: </strong> Make sure that
+                you or someone you trust is available to receive your package
+                during the estimated delivery time.
               </li>
               <li className="text-base md:text-lg mb-2">
-                Provide clear delivery instructions: If your address is
-                difficult to find or has special instructions, provide clear and
-                concise instructions to help the delivery driver locate your
-                address easily.
+                <strong>Provide clear delivery instructions:</strong> If your
+                address is difficult to find or has special instructions,
+                provide clear and concise instructions to help the delivery
+                driver locate your address easily.
               </li>
               <li className="text-base md:text-lg mb-2">
-                Inspect the delivery: Before accepting the delivery, inspect the
-                package for any damages or missing items. If there are any
-                issues, inform the delivery driver immediately.
+                <strong>Inspect the delivery:</strong> Before accepting the
+                delivery, inspect the package for any damages or missing items.
+                If there are any issues, inform the delivery driver immediately.
               </li>
             </ul>
           </div>
