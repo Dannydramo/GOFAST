@@ -2,6 +2,7 @@ import { Fragment, useContext, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import AuthContext from "../context/AuthContext";
+import { toast } from "react-toastify";
 import Footer from "../Footer";
 
 const Signup = () => {
@@ -9,7 +10,6 @@ const Signup = () => {
   const userRef = useRef();
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
-  const [errMessage, setErrMessage] = useState("");
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
@@ -34,41 +34,31 @@ const Signup = () => {
         passwordInput.trim() === "" ||
         confirmPasswordInput.trim() === ""
       ) {
-        setErrMessage("Please Enter All Required Field");
-        setTimeout(() => {
-          setErrMessage("");
-        }, 3000);
+        toast.error("Please Enter All Required Field");
       } else if (passwordInput.length < 8) {
         // check if password input has upto 8 characters
-        setErrMessage("Please password must contain upto 8 char");
-        setTimeout(() => {
-          setErrMessage("");
-        }, 3000);
+        toast.error("Please password must contain upto 8 characters");
       } else if (passwordInput !== confirmPasswordInput) {
         // Check if password and confirm password  value matches
-        setErrMessage("Please password must be the same");
-        setTimeout(() => {
-          setErrMessage("");
-        }, 3000);
+        toast.error("Please password must be the same");
       } else {
         // console.log(userInput, passwordInput, emailInput, confirmPasswordInput);
         await signUpUser(emailInput, passwordInput, userInput).then((user) => {
           setUser(user);
 
           if (!user || user === null || user === undefined) {
+            toast.error("No User Found");
             console.log("NO USER FOUND");
             return;
           } else {
+            toast.success("No User Found");
             console.log("USER FOUND");
             navigate("/ride");
           }
         });
       }
     } catch (error) {
-      setErrMessage(error.message);
-      setTimeout(() => {
-        setErrMessage("");
-      }, 3000);
+      toast.error(error.message);
     }
   };
 
@@ -78,14 +68,17 @@ const Signup = () => {
       await googleSignUpUser().then((user) => {
         setUser(user);
         if (!user || user === null || user === undefined) {
+          toast.error("No User Found");
           console.log("NO USER FOUND");
           return;
         } else {
+          toast.success("User Found");
           console.log("USER FOUND");
           navigate("/ride");
         }
       });
     } catch (error) {
+      toast.error(error.message);
       console.log(error);
     }
   };
@@ -97,8 +90,6 @@ const Signup = () => {
           <h1 className="text-3xl">SignUp</h1>
           <form onSubmit={handleSubmit}>
             <div className="my-4 flex flex-col text-base md:text-lg">
-              <p className="text-red-600">{errMessage}</p>
-
               <div className="my-4">
                 <label htmlFor="Username">Username</label>
                 <input
@@ -141,24 +132,23 @@ const Signup = () => {
               >
                 SignUp
               </button>
-
-              <div className="grid">
-                <button
-                  onClick={googleSign}
-                  className="flex items-center w-full text-center justify-center my-2 space-x-4 py-2 rounded-md"
-                >
-                  <FcGoogle /> <span>Continue with Google </span>{" "}
-                </button>
-              </div>
-
-              <div className="flex justify-center">
-                <p>Already have an account?</p>
-                <Link to="/login" className="underline text-blue-700">
-                  Login
-                </Link>
-              </div>
             </div>
           </form>
+          <div className="grid">
+            <button
+              onClick={googleSign}
+              className="flex items-center w-full text-center justify-center my-2 space-x-4 py-2 rounded-md"
+            >
+              <FcGoogle /> <span>Continue with Google </span>{" "}
+            </button>
+          </div>
+
+          <div className="flex justify-center">
+            <p>Already have an account?</p>
+            <Link to="/login" className="underline text-blue-700">
+              Login
+            </Link>
+          </div>
         </div>
       </section>
       <Footer />

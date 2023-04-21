@@ -17,6 +17,9 @@ import Security from "./pages/Security";
 import PrivacyNotice from "./pages/PrivacyNotice";
 import RequestRide from "./pages/RequestRide";
 import BlogDetails from "./pages/BlogDetails";
+import Food from "./pages/Food";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -24,6 +27,18 @@ function App() {
       <div className="min-h-screen absolute top-0 bg-[#fff8f8] w-full overflow-x-hidden">
         <AuthProvider>
           <Navbar />
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="dark"
+          />
           <Routes>
             <Route path="/" exact element={<Home />} />
             <Route path="/login" element={<Login />} />
@@ -37,6 +52,7 @@ function App() {
             <Route path="/security" element={<Security />} />
             <Route path="/privacynotice" element={<PrivacyNotice />} />
             <Route path="/ride" element={<RequestRide />} />
+            <Route path="/gofood" element={<Food />} />
           </Routes>
           {/* <Footer /> */}
         </AuthProvider>

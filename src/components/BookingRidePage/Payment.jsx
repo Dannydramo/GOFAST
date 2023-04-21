@@ -1,6 +1,7 @@
 import React, { Fragment, useContext } from "react";
 import PaystackPop from "@paystack/inline-js";
 import AuthContext from "../../context/AuthContext";
+import { toast } from "react-toastify";
 
 const Payment = () => {
   const { user } = useContext(AuthContext);
@@ -10,9 +11,17 @@ const Payment = () => {
     paystack.newTransaction({
       key: process.env.REACT_APP_PAYSTACK_PUBLIC_KEY,
       amount: 500 * 100,
-      email: user.email,
-      firstname: user.displayname,
+      email: "user.email",
+      firstname: "user.displayname",
       lastname: "Dan",
+      onSuccess(transaction) {
+        toast.success(
+          `Payment Successful Reference: ${transaction.reference} `
+        );
+      },
+      onCancel() {
+        toast.error("Payment was not Successful");
+      },
     });
   };
 

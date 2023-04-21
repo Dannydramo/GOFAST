@@ -4,11 +4,13 @@ import Close from "./images/icon-close.svg";
 import { useState, useEffect, Fragment, useContext } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "./context/AuthContext";
+import Serivice from "./components/LandingPage/Serivice";
 const Navbar = () => {
   let [open, setOpen] = useState(false);
   const [navbarBackground, setNavbarBackground] = useState("transparent");
   const [navShadow, setNavShadow] = useState("");
   const { user, signOutUser } = useContext(AuthContext);
+  const [toggleService, setToggleService] = useState(false);
 
   const handleScroll = () => {
     const scrollPosition = window.scrollY;
@@ -70,26 +72,51 @@ const Navbar = () => {
                 >
                   Home
                 </Link>
-                <li>Services</li>
-                <Link
-                  to="/faq"
-                  onClick={() => {
-                    setOpen(false);
-                  }}
+                <div className="relative">
+                  <p
+                    onClick={() => {
+                      setToggleService(!toggleService);
+                    }}
+                    className="cursor-pointer"
+                  >
+                    Services
+                  </p>
+                  {toggleService && (
+                    <Serivice
+                      setOpen={setOpen}
+                      setToggleService={setToggleService}
+                    />
+                  )}
+                </div>
+                <div
+                  className={`${
+                    toggleService && "relative top-20 lg:top-0"
+                  } flex flex-col lg:flex-row space-y-8 lg:space-y-0  lg:space-x-12`}
                 >
-                  FAQS
-                </Link>
-                <Link
-                  to="/blog"
-                  onClick={() => {
-                    setOpen(false);
-                  }}
-                >
-                  Blog
-                </Link>
+                  <Link
+                    to="/faq"
+                    onClick={() => {
+                      setOpen(false);
+                    }}
+                  >
+                    FAQS
+                  </Link>
+                  <Link
+                    to="/blog"
+                    onClick={() => {
+                      setOpen(false);
+                    }}
+                  >
+                    Blog
+                  </Link>
+                </div>
               </ul>
             </div>
-            <div className="flex flex-col lg:flex-row justify-between lg:items-center space-y-8 lg:space-y-0  lg:space-x-8 absolute top-[19rem] left-4 lg:relative lg:top-0">
+            <div
+              className={`flex flex-col lg:flex-row justify-between lg:items-center space-y-8 lg:space-y-0  lg:space-x-8 absolute top-[19rem] left-4 lg:relative lg:top-0 ${
+                toggleService && "absolute top-[23rem] lg:relative lg:top-0"
+              }`}
+            >
               {!user && (
                 <div className="flex flex-col lg:flex-row justify-between lg:items-center space-y-8 lg:space-y-0  lg:space-x-8">
                   {" "}

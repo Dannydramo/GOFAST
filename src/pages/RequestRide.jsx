@@ -3,6 +3,7 @@ import AuthContext from "../context/AuthContext";
 import BookMap from "../components/BookingRidePage/BookMap";
 import Payment from "../components/BookingRidePage/Payment";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const RequestRide = () => {
   const { user } = useContext(AuthContext);
@@ -13,8 +14,10 @@ const RequestRide = () => {
   const bookingRide = (e) => {
     e.preventDefault();
     if (!user) {
+      toast.error("You must be Signed In before booking a ride");
       navigate("/signup");
     } else {
+      toast.success("Booking Ride");
       console.log("Booking Ride");
     }
   };

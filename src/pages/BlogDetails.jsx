@@ -13,10 +13,10 @@ const BlogDetails = () => {
     <Fragment>
       <section className="w-[90%] mx-auto max-w-[1600px] mt-24">
         <div className="">
-          {filteredBlog.map((blogDet, index) => (
+          {filteredBlog.map((blogDetail, index) => (
             <div className="" key={index}>
               <h1 className="text-center font-bold text-2xl md:text-3xl lg:text-4xl w-full md:w-[80%] lg:w-[70%] mx-auto leading-[1.7]">
-                {blogDet.title.toUpperCase()}
+                {blogDetail.title.toUpperCase()}
               </h1>
             </div>
           ))}

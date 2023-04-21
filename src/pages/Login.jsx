@@ -2,13 +2,14 @@ import React, { Fragment, useContext, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import AuthContext from "../context/AuthContext";
+import { toast } from "react-toastify";
 import Footer from "../Footer";
+
 const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const { logInUser, googleSignUpUser } = useContext(AuthContext);
   const navigate = useNavigate();
-  const [errMessage, setErrMessage] = useState("");
   const [user, setUser] = useState(null);
 
   const handleSubmit = async (e) => {
@@ -18,27 +19,23 @@ const Login = () => {
 
     try {
       if (emailInput.trim() === "" || passwordInput.trim() === "") {
-        setErrMessage("Please Enter All Required Field");
-        setTimeout(() => {
-          setErrMessage("");
-        }, 3000);
+        toast.error("Please Enter All Required Field");
       } else {
         await logInUser(emailInput, passwordInput).then((user) => {
           setUser(user);
           if (!user || user === null || user === undefined) {
+            toast.error("No User Found");
             console.log("NO USER FOUND");
             return;
           } else {
             console.log("USER FOUND");
+            toast.success("User Found");
             navigate("/ride");
           }
         });
       }
     } catch (error) {
-      setErrMessage(error.message);
-      setTimeout(() => {
-        setErrMessage("");
-      }, 3000);
+      toast.error(error.message);
     }
   };
 
@@ -47,14 +44,17 @@ const Login = () => {
       await googleSignUpUser().then((user) => {
         setUser(user);
         if (!user || user === null || user === undefined) {
+          toast.error("No User Found");
           console.log("NO USER FOUND");
           return;
         } else {
+          toast.success("User Found");
           console.log("USER FOUND");
           navigate("/ride");
         }
       });
     } catch (error) {
+      toast.error(error.message);
       console.log(error);
     }
   };
@@ -65,7 +65,6 @@ const Login = () => {
           <h1 className="text-3xl">Login</h1>
           <form onSubmit={handleSubmit}>
             <div className="my-4 flex flex-col text-base md:text-lg">
-              <p className="text-red-600">{errMessage}</p>
               <div className="my-4">
                 <label htmlFor="Email">Email</label>
                 <input
@@ -90,24 +89,24 @@ const Login = () => {
               >
                 Login
               </button>
-
-              <div className="grid">
-                <button
-                  onClick={googleSign}
-                  className="flex items-center w-full text-center justify-center my-2 space-x-4 py-2 rounded-md"
-                >
-                  <FcGoogle /> <span>Continue with Google </span>{" "}
-                </button>
-              </div>
-
-              <div className="flex justify-center">
-                <p>Don't have an account?</p>
-                <Link to="/signup" className="underline text-blue-700">
-                  Signup
-                </Link>
-              </div>
             </div>
           </form>
+
+          <div className="grid">
+            <button
+              onClick={googleSign}
+              className="flex items-center w-full text-center justify-center my-2 space-x-4 py-2 rounded-md"
+            >
+              <FcGoogle /> <span>Continue with Google </span>{" "}
+            </button>
+          </div>
+
+          <div className="flex justify-center">
+            <p>Don't have an account?</p>
+            <Link to="/signup" className="underline text-blue-700">
+              Signup
+            </Link>
+          </div>
         </div>
       </section>
       <Footer />

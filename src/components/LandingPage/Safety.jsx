@@ -5,7 +5,7 @@ const Frequently = () => {
         <h1 className="text-center text-3xl sm:text-4xl md:text-5xl my-8">
           Your Safety Matters
         </h1>
-        <div className="grid lg:grid-cols-3 gap-2 lg:gap-12">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-12">
           <div className="">
             <h1 className="font-bold my-4 text-xl">Safety features</h1>
             <p className="text-base md:text-lg">
