@@ -1,6 +1,7 @@
 import React, { Fragment, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
+import { toast } from "react-toastify";
 
 const Serivice = ({ setOpen, setToggleService }) => {
   const { user } = useContext(AuthContext);
@@ -15,6 +16,7 @@ const Serivice = ({ setOpen, setToggleService }) => {
               setOpen(false);
               setToggleService(false);
               if (!user) {
+                toast.error("Please Sign In Before You Access This Page");
                 return;
               } else {
                 navigate("/ride");

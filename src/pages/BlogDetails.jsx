@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import { useParams } from "react-router-dom";
 import blogs from "../blog.json";
+import Navbar from "../Navbar";
 
 const BlogDetails = () => {
   const { blogid } = useParams();
@@ -11,6 +12,7 @@ const BlogDetails = () => {
 
   return (
     <Fragment>
+      <Navbar />
       <section className="w-[90%] mx-auto max-w-[1600px] mt-24">
         <div className="">
           {filteredBlog.map((blogDetail, index) => (

@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import Accordion from "../components/Accordion";
 import Footer from "../Footer";
+import Navbar from "../Navbar";
 
 const Faq = () => {
   const questions = [
@@ -58,7 +59,7 @@ const Faq = () => {
 
   return (
     <Fragment>
-      {" "}
+      <Navbar />{" "}
       <section className="mt-24 ">
         <div className="w-[90%] sm:w-[80%] md:w-[70%] lg:w-[60%] mx-auto max-w-[1600px]">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center my-[4rem]">

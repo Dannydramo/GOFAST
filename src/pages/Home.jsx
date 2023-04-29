@@ -5,10 +5,12 @@ import Delivery from "../components/LandingPage/Delivery";
 import Parcel from "../components/LandingPage/Parcel";
 import Safety from "../components/LandingPage/Safety";
 import Footer from "../Footer";
+import Navbar from "../Navbar";
 
 const Home = () => {
   return (
     <Fragment>
+      <Navbar />
       <Emergency />
       <Download />
       <Delivery />

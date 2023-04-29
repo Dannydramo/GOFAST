@@ -11,9 +11,9 @@ const Payment = () => {
     paystack.newTransaction({
       key: process.env.REACT_APP_PAYSTACK_PUBLIC_KEY,
       amount: 500 * 100,
-      email: "user.email",
-      firstname: "user.displayname",
-      lastname: "Dan",
+      email: `${user.email}`,
+      firstname: `${user.displayName}`,
+      lastname: "",
       onSuccess(transaction) {
         toast.success(
           `Payment Successful Reference: ${transaction.reference} `

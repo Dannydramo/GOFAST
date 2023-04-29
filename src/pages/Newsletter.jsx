@@ -1,9 +1,11 @@
 import React, { Fragment } from "react";
 import Footer from "../Footer";
+import Navbar from "../Navbar";
 
 const Newsletter = () => {
   return (
     <Fragment>
+      <Navbar />
       <section className="mt-24 ">
         <div className="w-[90%] sm:w-[80%] md:w-[70%] lg:w-[60%] mx-auto max-w-[1600px]">
           <h3 className="text-3xl font-bold mb-4">Dear valued customer,</h3>

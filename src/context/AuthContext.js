@@ -19,9 +19,11 @@ const AuthContext = createContext({
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState({});
+  const [loading, setLoading] = useState(false);
 
   // Create User With Email And Password
   const signUpUser = (email, password, displayName) => {
+    setLoading(true);
     // Create User with Email and Padddword Function
     return createUserWithEmailAndPassword(auth, email, password)
       .then((credential) => {
@@ -47,6 +49,7 @@ export const AuthProvider = ({ children }) => {
 
   // Login User Function
   const logInUser = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
@@ -59,8 +62,7 @@ export const AuthProvider = ({ children }) => {
   const googleProvider = new GoogleAuthProvider();
   const googleSignUpUser = async () => {
     try {
-      const result = await signInWithPopup(auth, googleProvider);
-      console.log(result.user);
+      return signInWithPopup(auth, googleProvider);
     } catch (error) {
       console.log(error);
     }
@@ -80,7 +82,15 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ signOutUser, signUpUser, logInUser, googleSignUpUser, user }}
+      value={{
+        signOutUser,
+        signUpUser,
+        logInUser,
+        googleSignUpUser,
+        user,
+        loading,
+        setLoading,
+      }}
     >
       {children}
     </AuthContext.Provider>

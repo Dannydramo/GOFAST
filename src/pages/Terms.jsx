@@ -1,9 +1,11 @@
 import React, { Fragment } from "react";
 import Footer from "../Footer";
+import Navbar from "../Navbar";
 
 const Terms = () => {
   return (
     <Fragment>
+      <Navbar />
       <section className="my-12 mt-24 ">
         <div className="w-[90%] sm:w-[80%] md:w-[70%] lg:w-[60%] mx-auto max-w-[1600px]">
           <div>
