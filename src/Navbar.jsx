@@ -5,6 +5,8 @@ import { useState, useEffect, Fragment, useContext } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "./context/AuthContext";
 import Serivice from "./components/LandingPage/Serivice";
+import { toast } from "react-toastify";
+
 const Navbar = () => {
   let [open, setOpen] = useState(false);
   const [navbarBackground, setNavbarBackground] = useState("transparent");
@@ -12,6 +14,7 @@ const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
   const [toggleService, setToggleService] = useState(false);
 
+  // Change Nav Background OnScroll
   const handleScroll = () => {
     const scrollPosition = window.scrollY;
     if (scrollPosition > 50) {
@@ -33,9 +36,11 @@ const Navbar = () => {
     };
   }, []);
 
+  // Logout User
   const logoutHandler = () => {
     setOpen(false);
     signOutUser();
+    toast.success("Logged Out Successful");
   };
 
   return (

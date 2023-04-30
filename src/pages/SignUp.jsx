@@ -5,6 +5,8 @@ import AuthContext from "../context/AuthContext";
 import { toast } from "react-toastify";
 import { Oval } from "react-loader-spinner";
 import Logo from "../images/favicon.png";
+import { updateProfile } from "firebase/auth";
+import { auth } from "../firebase";
 
 const Signup = () => {
   const emailRef = useRef();
@@ -14,7 +16,6 @@ const Signup = () => {
 
   const navigate = useNavigate();
 
-  // Firebase Signup User Authentication
   const { signUpUser, googleSignUpUser, loading, setLoading } =
     useContext(AuthContext);
 
@@ -44,17 +45,38 @@ const Signup = () => {
         // Check if password and confirm password  value matches
         toast.error("Please password must be the same");
       } else {
-        const response = await signUpUser(emailInput, passwordInput, userInput);
-        console.log(response.user);
-        setLoading(true);
-        if (response.user) {
-          navigate("/ride");
-          setLoading(false);
-        } else {
-          setLoading(false);
-          toast.error("Login Was Not Successful");
-          return;
-        }
+        // Firebase Signup User Authentication
+        const response = await signUpUser(emailInput, passwordInput)
+          .then(async (credential) => {
+            //  Adds Username to the created account
+            try {
+              await updateProfile(auth.currentUser, {
+                displayName: userInput,
+              });
+              // Checks if the added username was successful
+              console.log("User profile updated successfully");
+              // return credential.user;
+              console.log(credential.user);
+              setLoading(true);
+              // If Credential.User is found Navigate to the ride Page
+              if (credential.user) {
+                navigate("/ride");
+                setLoading(false);
+              } else {
+                // If Credential.User is not found Return
+                setLoading(false);
+                toast.error("SignUp Was Not Successful");
+                return;
+              }
+            } catch (error) {
+              console.log("Error updating user profile:", error);
+              throw error;
+            }
+          })
+          .catch((error) => {
+            console.log("Error creating user account:", error);
+            throw error;
+          });
       }
     } catch (error) {
       setLoading(false);
@@ -65,12 +87,12 @@ const Signup = () => {
   // Firebase User Google Auth
   const googleSign = async () => {
     try {
-      const response = await googleSignUpUser();
+      const response = googleSignUpUser();
       console.log(response.user);
       if (response.user) {
         navigate("/ride");
       } else {
-        toast.error("Login Was Not Successful");
+        toast.error("Check Your Internet Connection And Try Again");
         return;
       }
     } catch (error) {
@@ -86,7 +108,11 @@ const Signup = () => {
           <div className="md:w-[80%] xl:w-[70%] mx-auto pt-4 mt-12">
             <div className="my-4">
               <Link to="/">
-                <img src={Logo} alt="" className="absolute top-8 left-8" />
+                <img
+                  src={Logo}
+                  alt="Logo"
+                  className="absolute top-8 left-4 md:left-14 lg:left-16"
+                />
               </Link>
               <p className="text-3xl sm:text-4xl font-bold text-black mt-4 mb-2">
                 Get Started with GoFast

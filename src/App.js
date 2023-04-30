@@ -20,7 +20,6 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-  // bg-[#fff8f8]
   return (
     <Fragment>
       <div className="min-h-screen absolute bg-[#fff8f8] top-0  w-full overflow-x-hidden">

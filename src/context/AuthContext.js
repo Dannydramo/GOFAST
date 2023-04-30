@@ -6,7 +6,6 @@ import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
-  updateProfile,
 } from "firebase/auth";
 import { auth } from "../firebase";
 
@@ -22,29 +21,10 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
 
   // Create User With Email And Password
-  const signUpUser = (email, password, displayName) => {
+  const signUpUser = (email, password) => {
     setLoading(true);
-    // Create User with Email and Padddword Function
-    return createUserWithEmailAndPassword(auth, email, password)
-      .then((credential) => {
-        //  Adds Username to the created account
-        return updateProfile(auth.currentUser, {
-          displayName: displayName,
-        })
-          .then(() => {
-            // Checks if the added username was successful
-            console.log("User profile updated successfully");
-            return credential.user;
-          })
-          .catch((error) => {
-            console.log("Error updating user profile:", error);
-            throw error;
-          });
-      })
-      .catch((error) => {
-        console.log("Error creating user account:", error);
-        throw error;
-      });
+    // Create User with Email and Password Function
+    return createUserWithEmailAndPassword(auth, email, password);
   };
 
   // Login User Function

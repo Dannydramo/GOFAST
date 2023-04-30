@@ -12,6 +12,8 @@ const Login = () => {
   const { logInUser, googleSignUpUser, loading, setLoading } =
     useContext(AuthContext);
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState();
+  const [togglePassword, setTogglePassword] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,10 +24,12 @@ const Login = () => {
       if (emailInput.trim() === "" || passwordInput.trim() === "") {
         toast.error("Please Enter All Required Field");
       } else {
-        const response = await logInUser(emailInput, passwordInput);
+        const response = logInUser(emailInput, passwordInput);
         if (response.user) {
+          setLoading(false);
           navigate("/ride");
         } else {
+          setLoading(false);
           toast.error("Login Was Not Successful");
           return;
         }
@@ -38,12 +42,12 @@ const Login = () => {
 
   const googleSign = async () => {
     try {
-      const response = await googleSignUpUser();
+      const response = googleSignUpUser();
       console.log(response.user);
       if (response.user) {
         navigate("/ride");
       } else {
-        toast.error("Login Was Not Successful");
+        toast.error("Check Your Internet Connection And Try Again");
         return;
       }
     } catch (error) {
@@ -58,7 +62,11 @@ const Login = () => {
           <div className="md:w-[80%] xl:w-[70%] mx-auto pt-4 mt-12">
             <div className="my-4">
               <Link to="/">
-                <img src={Logo} alt="" className="absolute top-8 left-8" />
+                <img
+                  src={Logo}
+                  alt="Logo"
+                  className="absolute top-8 left-4 md:left-14 lg:left-16"
+                />
               </Link>
               <p className="text-3xl sm:text-4xl font-bold text-black mt-4 mb-2">
                 Sign in to your
@@ -85,12 +93,25 @@ const Login = () => {
                   <label htmlFor="Password">Password</label>
                   <input
                     type="password"
+                    value={showPassword}
                     placeholder="Enter Your Password"
                     className="bg-transparent outline-none borderCols w-full p-2 rounded-md"
+                    onChange={(e) => {
+                      setShowPassword(e.target.value);
+                      console.log(showPassword);
+                    }}
                     ref={passwordRef}
                   />
                 </div>
-
+                <p
+                  onClick={() => {
+                    setTogglePassword(!togglePassword);
+                    console.log(togglePassword);
+                  }}
+                >
+                  {togglePassword ? "HidePassword" : "ShowPassword"}
+                </p>
+                <p>{togglePassword && showPassword}</p>
                 <button
                   type="submit"
                   className="bg-lightBlue px-4 py-2 text-center rounded-md my-4 bg-greek text-white"

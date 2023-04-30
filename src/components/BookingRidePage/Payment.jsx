@@ -10,17 +10,17 @@ const Payment = () => {
     const paystack = new PaystackPop();
     paystack.newTransaction({
       key: process.env.REACT_APP_PAYSTACK_PUBLIC_KEY,
-      amount: 500 * 100,
+      amount: 5000 * 100,
       email: `${user.email}`,
       firstname: `${user.displayName}`,
       lastname: "",
       onSuccess(transaction) {
         toast.success(
-          `Payment Successful Reference: ${transaction.reference} `
+          `Dear ${user.displayName}, Your Payment was Successful With Reference No: ${transaction.reference}. Your dispatch rider will come pickup your delivery shortly `
         );
       },
       onCancel() {
-        toast.error("Payment was not Successful");
+        toast.error("Payment was not Successful. Please Try Again Later");
       },
     });
   };
