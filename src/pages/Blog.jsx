@@ -15,7 +15,7 @@ const Blog = () => {
           {blogDel.map((blog, index) => (
             <div className="bg-gray-500 rounded-xl" key={index}>
               <Link to={`/blog/${blog.url}`}>
-                <img src={Bike} alt="" />
+                <img src={blog.img} alt="" />
                 <p className="p-4">{blog.title}</p>
               </Link>
             </div>
