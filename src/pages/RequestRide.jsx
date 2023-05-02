@@ -12,8 +12,6 @@ import MapboxNavigationControl from "mapbox-gl/dist/mapbox-gl.js";
 
 mapboxgl.accessToken = import.meta.env.VITE_MAP_BOX_API_KEY;
 
-// npm install mapbox-gl@1.13.0
-
 const RequestRide = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
