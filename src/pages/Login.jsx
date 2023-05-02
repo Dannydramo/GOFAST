@@ -45,9 +45,11 @@ const Login = () => {
       const response = googleSignUpUser();
       console.log(response.user);
       if (response.user) {
+        setLoading(false);
         navigate("/ride");
       } else {
-        toast.error("Check Your Internet Connection And Try Again");
+        setLoading(false);
+        toast.error("Login Was Not Successful");
         return;
       }
     } catch (error) {
@@ -138,6 +140,12 @@ const Login = () => {
                 </button>
               </div>
             </form>
+            <Link
+              to="/reset-password"
+              className="text-center my-2 text-blue-700 w-full"
+            >
+              Forgot Password?
+            </Link>
             <div className="grid">
               <button
                 onClick={googleSign}

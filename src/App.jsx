@@ -18,6 +18,7 @@ import BlogDetails from "./pages/BlogDetails";
 import Food from "./pages/Food";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ForgotPassword from "./pages/ForgotPassword";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
             <Route path="/" exact element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/reset-password" element={<ForgotPassword />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:blogid" element={<BlogDetails />} />
             <Route path="/faq" element={<Faq />} />

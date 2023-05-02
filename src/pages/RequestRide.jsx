@@ -10,7 +10,7 @@ import MapboxDirections from "@mapbox/mapbox-gl-directions/dist/mapbox-gl-direct
 import "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css";
 import MapboxNavigationControl from "mapbox-gl/dist/mapbox-gl.js";
 
-mapboxgl.accessToken = process.env.REACT_APP_MAP_BOX_API_KEY;
+mapboxgl.accessToken = import.meta.env.VITE_MAP_BOX_API_KEY;
 
 const RequestRide = () => {
   const { user } = useContext(AuthContext);

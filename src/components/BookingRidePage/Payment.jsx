@@ -9,7 +9,7 @@ const Payment = () => {
     e.preventDefault();
     const paystack = new PaystackPop();
     paystack.newTransaction({
-      key: process.env.REACT_APP_PAYSTACK_PUBLIC_KEY,
+      key: import.meta.env.VITE_PAYSTACK_PUBLIC_KEY,
       amount: 5000 * 100,
       email: `${user.email}`,
       firstname: `${user.displayName}`,

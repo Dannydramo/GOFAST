@@ -20,6 +20,8 @@ const BlogDetails = () => {
               <h1 className="text-center font-bold text-2xl md:text-3xl lg:text-4xl w-full md:w-[80%] lg:w-[70%] mx-auto leading-[1.7]">
                 {blogDetail.title.toUpperCase()}
               </h1>
+              <img src={blogDetail.img} alt="" />
+              <p>{blogDetail.content}</p>
             </div>
           ))}
         </div>
