@@ -50,7 +50,7 @@ function App() {
             <Route path="/terms&categories" element={<Terms />} />
             <Route path="/security" element={<Security />} />
             <Route path="/privacynotice" element={<PrivacyNotice />} />
-            <Route path="/ride" element={<RequestRide />} />
+            {/* <Route path="/ride" element={<RequestRide />} /> */}
             <Route path="/gofood" element={<Food />} />
           </Routes>
         </AuthProvider>

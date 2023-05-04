@@ -43,7 +43,7 @@ const RequestRide = () => {
 
   useEffect(() => {
     toast.success(`Welcome ${user.displayName}`);
-  }, [user.displayName]);
+  }, []);
 
   return (
     <Fragment>
