@@ -16,7 +16,7 @@ const Payment = () => {
       lastname: "",
       onSuccess(transaction) {
         toast.success(
-          `Dear ${user.displayName}, Your Payment was Successful With Reference No: ${transaction.reference}. Your dispatch rider will come pickup your delivery shortly `
+          `Dear ${user.displayName}, Your Payment was Successful With Reference No: ${transaction.reference} `
         );
       },
       onCancel() {
@@ -27,12 +27,15 @@ const Payment = () => {
 
   return (
     <Fragment>
-      <button
-        onClick={handlePayment}
-        className="w-full py-2 rounded-md my-2 md:my-4 bg-greek text-white"
-      >
-        Continue With Payment
-      </button>
+      <div className="absolute top-[10rem] left-[4rem] z-[100000] bg-white p-4 rounded-xl">
+        {" "}
+        <button
+          onClick={handlePayment}
+          className="w-full py-2 rounded-md my-2 md:my-4 bg-greek text-white p-4"
+        >
+          Continue With Payment
+        </button>
+      </div>
     </Fragment>
   );
 };

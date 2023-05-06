@@ -50,11 +50,7 @@ export const AuthProvider = ({ children }) => {
   // Google Sign In Function
   const googleProvider = new GoogleAuthProvider();
   const googleSignUpUser = async () => {
-    try {
-      return signInWithPopup(auth, googleProvider);
-    } catch (error) {
-      console.log(error);
-    }
+    return signInWithPopup(auth, googleProvider);
   };
 
   // Manages User State

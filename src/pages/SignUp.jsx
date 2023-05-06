@@ -1,6 +1,7 @@
 import { Fragment, useContext, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import AuthContext from "../context/AuthContext";
 import { toast } from "react-toastify";
 import { Oval } from "react-loader-spinner";
@@ -13,11 +14,13 @@ const Signup = () => {
   const userRef = useRef();
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
-
   const navigate = useNavigate();
-
   const { signUpUser, googleSignUpUser, loading, setLoading } =
     useContext(AuthContext);
+  const [showPassword, setShowPassword] = useState("");
+  const [togglePassword, setTogglePassword] = useState(false);
+  const [confirmshowPassword, setConfirmShowPassword] = useState("");
+  const [confirmtogglePassword, setConfirmTogglePassword] = useState(false);
 
   // Handle Signup submit function
   const handleSubmit = async (e) => {
@@ -87,12 +90,14 @@ const Signup = () => {
   // Firebase User Google Auth
   const googleSign = async () => {
     try {
-      const response = googleSignUpUser();
+      const response = await googleSignUpUser();
       console.log(response.user);
       if (response.user) {
+        setLoading(false);
         navigate("/ride");
       } else {
-        toast.error("Check Your Internet Connection And Try Again");
+        setLoading(false);
+        toast.error("Login Was Not Successful");
         return;
       }
     } catch (error) {
@@ -140,24 +145,58 @@ const Signup = () => {
                   />
                 </div>
 
-                <div className="my-3">
-                  <label htmlFor="Password">Password</label>
+                <label htmlFor="Password" className="mt-3">
+                  Password
+                </label>
+                <div className="borderCols w-full p-2 rounded-md flex justify-between items-center">
+                  {" "}
                   <input
-                    type="password"
+                    type={togglePassword ? "text" : "password"}
+                    value={showPassword}
                     placeholder="Enter Your Password"
-                    className="bg-transparent outline-none borderCols w-full p-2 rounded-md"
+                    className="bg-transparent outline-none w-full"
+                    onChange={(e) => {
+                      setShowPassword(e.target.value);
+                    }}
                     ref={passwordRef}
                   />
+                  <div
+                    className="cursor-pointer"
+                    onClick={() => {
+                      setTogglePassword(!togglePassword);
+                    }}
+                  >
+                    {togglePassword ? <AiFillEye /> : <AiFillEyeInvisible />}
+                  </div>
                 </div>
 
-                <div className="my-3">
-                  <label htmlFor="Password">Confirm Password</label>
+                <label htmlFor="Password" className="mt-6">
+                  Confirm Password
+                </label>
+                <div className="borderCols w-full p-2 rounded-md flex justify-between items-center mb-6">
+                  {" "}
                   <input
-                    type="password"
-                    placeholder="Confirm Your Password"
-                    className="bg-transparent outline-none borderCols w-full p-2 rounded-md"
+                    type={confirmtogglePassword ? "text" : "password"}
+                    value={confirmshowPassword}
+                    placeholder="Enter Your Password"
+                    className="bg-transparent outline-none w-full"
+                    onChange={(e) => {
+                      setConfirmShowPassword(e.target.value);
+                    }}
                     ref={confirmPasswordRef}
                   />
+                  <div
+                    className="cursor-pointer"
+                    onClick={() => {
+                      setConfirmTogglePassword(!confirmtogglePassword);
+                    }}
+                  >
+                    {confirmtogglePassword ? (
+                      <AiFillEye />
+                    ) : (
+                      <AiFillEyeInvisible />
+                    )}
+                  </div>
                 </div>
 
                 <button

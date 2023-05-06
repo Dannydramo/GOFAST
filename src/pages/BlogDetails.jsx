@@ -21,7 +21,7 @@ const BlogDetails = () => {
                 {blogDetail.title.toUpperCase()}
               </h1>
               <img src={blogDetail.img} alt="" />
-              <p>{blogDetail.content}</p>
+              <p className="my-4 text-base md:text-lg">{blogDetail.content}</p>
             </div>
           ))}
         </div>

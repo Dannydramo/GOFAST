@@ -1,6 +1,7 @@
 import React, { Fragment, useContext, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import AuthContext from "../context/AuthContext";
 import { toast } from "react-toastify";
 import { Oval } from "react-loader-spinner";
@@ -42,7 +43,7 @@ const Login = () => {
 
   const googleSign = async () => {
     try {
-      const response = googleSignUpUser();
+      const response = await googleSignUpUser();
       console.log(response.user);
       if (response.user) {
         setLoading(false);
@@ -91,29 +92,38 @@ const Login = () => {
                   />
                 </div>
 
-                <div className="my-3">
-                  <label htmlFor="Password">Password</label>
+                <label htmlFor="Password" className="mt-3">
+                  Password
+                </label>
+                <div className="borderCols w-full p-2 rounded-md flex justify-between items-center">
+                  {" "}
                   <input
-                    type="password"
+                    type={togglePassword ? "text" : "password"}
                     value={showPassword}
                     placeholder="Enter Your Password"
-                    className="bg-transparent outline-none borderCols w-full p-2 rounded-md"
+                    className="bg-transparent outline-none w-full"
                     onChange={(e) => {
                       setShowPassword(e.target.value);
                       console.log(showPassword);
                     }}
                     ref={passwordRef}
                   />
+                  <div
+                    className="cursor-pointer"
+                    onClick={() => {
+                      setTogglePassword(!togglePassword);
+                    }}
+                  >
+                    {togglePassword ? <AiFillEye /> : <AiFillEyeInvisible />}
+                  </div>
                 </div>
-                <p
-                  onClick={() => {
-                    setTogglePassword(!togglePassword);
-                    console.log(togglePassword);
-                  }}
+
+                <Link
+                  to="/reset-password"
+                  className="text-center my-2 text-blue-700 w-full"
                 >
-                  {togglePassword ? "HidePassword" : "ShowPassword"}
-                </p>
-                <p>{togglePassword && showPassword}</p>
+                  Forgot Password?
+                </Link>
                 <button
                   type="submit"
                   className="bg-lightBlue px-4 py-2 text-center rounded-md my-4 bg-greek text-white"
@@ -140,12 +150,6 @@ const Login = () => {
                 </button>
               </div>
             </form>
-            <Link
-              to="/reset-password"
-              className="text-center my-2 text-blue-700 w-full"
-            >
-              Forgot Password?
-            </Link>
             <div className="grid">
               <button
                 onClick={googleSign}

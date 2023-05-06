@@ -16,7 +16,7 @@ const ForgotPassword = () => {
       if (emailInput === "") {
         toast.error("Please Enter An Email Address");
       } else {
-        const response = resetPassword(emailInput);
+        const response = await resetPassword(emailInput);
         console.log(response);
         if (response.user) {
           setLoading(false);
