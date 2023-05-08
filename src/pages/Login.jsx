@@ -25,7 +25,7 @@ const Login = () => {
       if (emailInput.trim() === "" || passwordInput.trim() === "") {
         toast.error("Please Enter All Required Field");
       } else {
-        const response = logInUser(emailInput, passwordInput);
+        const response = await logInUser(emailInput, passwordInput);
         if (response.user) {
           setLoading(false);
           navigate("/ride");
