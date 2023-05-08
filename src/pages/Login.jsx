@@ -104,7 +104,6 @@ const Login = () => {
                     className="bg-transparent outline-none w-full"
                     onChange={(e) => {
                       setShowPassword(e.target.value);
-                      console.log(showPassword);
                     }}
                     ref={passwordRef}
                   />

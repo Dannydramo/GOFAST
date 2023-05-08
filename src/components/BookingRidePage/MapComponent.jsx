@@ -1,50 +1,33 @@
-import React, { useState } from "react";
-import {
-  MapContainer,
-  TileLayer,
-  Marker,
-  Popup,
-  Polyline,
-} from "react-leaflet";
+import React, { useEffect } from "react";
 
-const center = [51.505, -0.09];
+mapboxgl.accessToken = import.meta.env.VITE_MAP_BOX_API_KEY;
 
-function MapComponent() {
-  const [origin, setOrigin] = useState(null);
-  const [destination, setDestination] = useState(null);
+const MapComponent = () => {
+  useEffect(() => {
+    // Create a new Mapbox map instance
+    const map = new window.mapboxgl.Map({
+      container: "map-container",
+      style: "mapbox://styles/mapbox/streets-v11",
+      center: [-122.4194, 37.7749],
+      zoom: 12,
+    });
 
-  const onMapClick = (event) => {
-    const { latlng } = event;
-    if (!origin) {
-      setOrigin(latlng);
-    } else if (!destination) {
-      setDestination(latlng);
-    }
-  };
+    // Add zoom and rotation controls to the map.
+    map.addControl(new mapboxgl.NavigationControl());
 
-  const polylinePoints = origin && destination ? [origin, destination] : [];
+    var directions = new MapboxDirections({
+      accessToken: mapboxgl.accessToken,
+    });
+
+    map.addControl(directions, "top-left");
+
+    // Clean up the map instance when the component is unmounted
+    return () => map.remove();
+  }, []);
 
   return (
-    <MapContainer center={center} zoom={13} onClick={onMapClick}>
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      />
-      {origin && (
-        <Marker position={origin}>
-          <Popup>Origin</Popup>
-        </Marker>
-      )}
-      {destination && (
-        <Marker position={destination}>
-          <Popup>Destination</Popup>
-        </Marker>
-      )}
-      {polylinePoints.length > 0 && (
-        <Polyline positions={polylinePoints} color="red" />
-      )}
-    </MapContainer>
+    <div id="map-container" style={{ width: "100%", height: "90vh" }}></div>
   );
-}
+};
 
 export default MapComponent;

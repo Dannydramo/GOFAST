@@ -27,11 +27,11 @@ const Payment = () => {
 
   return (
     <Fragment>
-      <div className="absolute top-[10rem] left-[4rem] z-[100000] bg-white p-4 rounded-xl">
+      <div className="">
         {" "}
         <button
           onClick={handlePayment}
-          className="w-full py-2 rounded-md my-2 md:my-4 bg-greek text-white p-4"
+          className="w-[80%] mx-auto flex justify-center py-2 rounded-md my-2 md:my-4 bg-greek text-white p-4"
         >
           Continue With Payment
         </button>

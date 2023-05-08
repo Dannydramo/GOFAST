@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 
 import Payment from "../components/BookingRidePage/Payment";
-import { toast } from "react-toastify";
 import MapComponent from "../components/BookingRidePage/MapComponent";
 
 const RequestRide = () => {
@@ -9,7 +8,6 @@ const RequestRide = () => {
     <Fragment>
       <section className="w-[100vw] h-[100vh] relative flex flex-col bg-transparent">
         <div>
-          {" "}
           <MapComponent />
           <Payment />
         </div>
