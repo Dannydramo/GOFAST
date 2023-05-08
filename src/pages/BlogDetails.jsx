@@ -20,10 +20,16 @@ const BlogDetails = () => {
               <h1 className="my-8 text-center font-bold text-2xl md:text-3xl lg:text-4xl w-full md:w-[80%] lg:w-[70%] mx-auto leading-[1.7]">
                 {blogDetail.title.toUpperCase()}
               </h1>
-              {/* <img src={blogDetail.img} alt="" /> */}
+              {/* <img
+                src={blogDetail.img}
+                alt=""
+                className="w-[1200px] h-[500px] object-cover"
+              /> */}
               <div
-                className={`bg-${blogDetail.img} w-[100vw] h-[400px] bg-cover bg-no-repeat`}
+                className="w-[90vw] h-[600px] bg-contain bg-no-repeat bg-center"
+                style={{ backgroundImage: `url(${blogDetail.img})` }}
               ></div>
+
               <p className="my-8 text-base md:text-lg">{blogDetail.content}</p>
             </div>
           ))}
