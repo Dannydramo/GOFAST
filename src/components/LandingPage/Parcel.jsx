@@ -22,33 +22,63 @@ const Parcel = () => {
             <div className="flex justify-between">
               <div className="space-y-4">
                 <div className="flex items-center">
-                  <img src={Ellispe} alt="rounded-button" />
+                  <img
+                    src={Ellispe}
+                    alt="rounded-button"
+                    width="15"
+                    height="15"
+                  />
                   <p className="ml-2 text-base md:text-lg">
                     Total free account
                   </p>
                 </div>
                 <div className="flex items-center">
-                  <img src={Ellispe} alt="rounded-button" />
+                  <img
+                    src={Ellispe}
+                    alt="rounded-button"
+                    width="15"
+                    height="15"
+                  />
                   <p className="ml-2  text-base md:text-lg">Easy to use</p>
                 </div>
                 <div className="flex items-center">
-                  <img src={Ellispe} alt="rounded-button" />
+                  <img
+                    src={Ellispe}
+                    alt="rounded-button"
+                    width="15"
+                    height="15"
+                  />
                   <p className="ml-2 text-base md:text-lg">100% guaranteed</p>
                 </div>
               </div>
               <div className="space-y-4">
                 <div className="flex items-center">
-                  <img src={Ellispe} alt="rounded-button" />
+                  <img
+                    src={Ellispe}
+                    alt="rounded-button"
+                    width="15"
+                    height="15"
+                  />
                   <p className="text-lg ml-2 md:text-xl">
                     Cheap Delivery Price
                   </p>
                 </div>
                 <div className="flex items-center">
-                  <img src={Ellispe} alt="rounded-button" />
+                  <img
+                    src={Ellispe}
+                    alt="rounded-button"
+                    width="15"
+                    height="15"
+                  />
                   <p className="ml-2 text-base md:text-lg">Safe & Secure</p>
                 </div>
                 <div className="flex items-center">
-                  <img src={Ellispe} alt="rounded-button" />
+                  <img
+                    src={Ellispe}
+                    alt="rounded-button"
+                    width="15"
+                    height="15"
+                  />
                   <p className="ml-2 text-base md:text-lg">
                     Total free account
                   </p>

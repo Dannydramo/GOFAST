@@ -14,21 +14,29 @@ const Download = () => {
               We made our app super so we could serve you better
             </p>
           </div>
-          <div className="">
-            <div className="flex py-2 px-4 rounded-md border-2 border-white items-center text-white max-w-[300px]">
-              <img src={Apple} alt="Apple Download" />
+          <div className="flex flex-row sm:flex-col space-x-2 sm:space-x-0">
+            <div className="flex py-2 pr-4 sm:px-4 rounded-md my-3 border-2 border-white items-center min-w-[150px] text-white sm:max-w-[300px]">
+              <img
+                src={Apple}
+                alt="Apple Download"
+                width="50"
+                height="50"
+                className=""
+              />
               <p className="text-base md:text-lg">
-                Download on the <br /> <span>APP STORE</span>
+                Get it on <br /> <span>APP STORE</span>
               </p>
             </div>
-            <div className="flex py-2 px-4 rounded-md my-3 border-2 border-white items-center text-white max-w-[300px]">
+            <div className="flex py-2 px-2 sm:px-4 rounded-md my-3 border-2 border-white items-center min-w-[150px] text-white sm:max-w-[300px]">
               <img
                 src={Playstore}
                 alt="PlayStore Download"
-                className="ml-6 mr-2"
+                className="sm:ml-2 sm:mr-2"
+                width="40"
+                height="40"
               />
               <p className="text-base md:text-lg">
-                Get it on <br /> <span>PLAYSTORE</span>
+                Get it on <br /> <span>PLAY STORE</span>
               </p>
             </div>
           </div>
