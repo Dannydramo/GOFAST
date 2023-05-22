@@ -1,12 +1,13 @@
 import React, { Fragment, useContext, useRef, useState } from "react";
 import Logo from "../images/favicon.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import { Oval } from "react-loader-spinner";
 import { toast } from "react-toastify";
 const ForgotPassword = () => {
   const emailRef = useRef();
   const { loading, setLoading, resetPassword } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   //   Reset Password Function
   const resetPasswordHandler = async (e) => {
@@ -16,15 +17,10 @@ const ForgotPassword = () => {
       if (emailInput === "") {
         toast.error("Please Enter An Email Address");
       } else {
-        const response = await resetPassword(emailInput);
-        console.log(response);
-        if (response.user) {
-          setLoading(false);
-        } else {
-          setLoading(false);
-          toast.error("Failed to reset password");
-          return;
-        }
+        await resetPassword(emailInput);
+        setLoading(false);
+        toast.success("Check Your Email for Password Reset Link");
+        navigate("/login");
       }
     } catch (error) {
       toast.error(error.message);
