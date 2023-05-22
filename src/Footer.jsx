@@ -30,7 +30,7 @@ const Footer = () => {
               <h4 className="font-bold mb-4 text-xl">Categories</h4>
               <ul className="space-y-2 ml-2 text-base md:text-lg flex flex-col">
                 <Link to="/">Home & Appliances</Link>
-                <Link to="">Food Stuff</Link>
+                <Link to="/gofood">Food Stuff</Link>
                 {/* The foodstuff link is linking to gofood.vercel.app  */}
                 <Link to="/">Others</Link>
               </ul>
@@ -48,10 +48,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <p className="text-center">
-          Copyright &copy; 2023 Gofast. Designed By Amaechi Emmanuel. Developed
-          by Alumandu Daniel
-        </p>
+        <p className="text-center">Copyright &copy; 2023 Gofast.</p>
       </div>
     </footer>
   );
